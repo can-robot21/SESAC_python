@@ -1,5 +1,10 @@
 # 파일/폴더
+/images
 .DS_store
+.gitignore
+*.jpg
+*.jpeg
+
 
 
 # 문서 파일 예외처리
