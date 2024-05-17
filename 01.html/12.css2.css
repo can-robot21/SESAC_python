@@ -1,0 +1,13 @@
+#planet1 {
+    width: 300px;
+    margin-right: 30px;
+    margin-top:100px
+}
+#planet2 {
+    width: 300px;
+    margin-left: 30px;
+    border: 1px solid green;
+}
+.container {
+    border: 5px solid yellow;
+}

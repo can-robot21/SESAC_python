@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 실행</title>
+    <style>
+        div {
+            width: 250px;
+            height: 100px;
+            color: white;
+            position: relative;
+            overflow: hidden auto;
+        }
+        .div1 {background-color:orange; z-index:10 }
+        .div2 {background-color:blue; bottom:50px; z-index:20 }
+        .div3 {background-color:green; bottom: 100px; z-index:30 }
+        .div4 {background-color:red; bottom: 150px; z-index:31 }
+    </style>
+</head>
+<body>
+    <h1>Z-index 를 통한 레이어 순서 변경</h1>
+    <div class="div1">오렌지 색상으로 보이는 글자와 레이어 내부에 쓰여진 글씨의 초과된 부분에 대한 처리를 어떻게 하는지 스크롤 노출으로 처리하는 CSS 처리</div>
+    <div class="div2">BLUE</div>
+    <div class="div3">GREEN</div>
+    <div class="div4">RED</div>
+</body>
+</html>

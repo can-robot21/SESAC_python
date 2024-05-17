@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .square {
+            background-color: aqua;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            transition-property: width, height;
+            transition-duration: 3.0s;
+            transition-timing-function: ease;
+        }
+        .square:hover {
+            width: 150px;
+            height: 150px;
+        }
+        .button {
+            color: black;
+            transition-property: color;
+            transition-duration: 2.0s;
+            transition-timing-function: ease-out;
+        }
+        .images {
+            width: 200px;
+            height: 200px;
+            transition-property: transform;
+            transition-duration: 2s;
+            transition-timing-function: ease-in-out;
+        }
+        .images:hover {
+            transform: rotate(100deg);
+        }
+        .gradient {
+            background-image: linear-gradient(to right, red, yellow);
+        }
+        .gradient:hover {
+            background-image: linear-gradient(to right, yellow, blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="square"></div>
+    <br>
+    <button class="button">Hover me</button>
+    <br>
+    <img src="images/pp1.jpg" alt="" class="images">
+    <div class="gradient" width="500px" height="10px"></div>
+</body>
+</html>
