@@ -1,0 +1,118 @@
+body {
+    /* all: unset !important; */
+    all: unset;
+}
+
+/* 기본 밑줄 제거 */
+a {
+    all: unset;
+  }
+
+  a:link {
+    color: pink;
+  }
+
+  a:visited {
+    color: black;
+  }
+
+  a:hover {
+    color: red;
+  }
+
+  a:active {
+    color: green;
+  }
+
+.header {
+    width: 100%;
+    padding-left: auto;
+    padding-right: auto;
+
+}
+
+.toptag {
+    display: flex;
+    padding-top: 5px;
+    padding-left: 10px;
+
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    width: 100px;
+    height: 20px;
+}
+.topnavi {
+    float:left;
+    width: 20%;
+    height: 60px;
+    font-size: 15px;
+    padding-top: 20px;
+}
+
+.topnavi:first-child {
+    text-align: left;
+}
+
+.topnavi:last-child {
+    text-align: right;
+}
+
+.month {
+    float: left;
+    font-family: "Do Hyeon", sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    text-align: center;
+    padding-top: 10px;
+    width: 59%;
+    height: 60px;    
+}
+
+.top-image {
+    width: 100%;
+}
+
+.article {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    display: inline;;
+    width: 20%;
+}
+
+.right  {
+    display: inline;
+    width: 20%;
+}
+
+.mothly {
+    display: inline;
+    width: 60%;
+}
+
+.daily {
+    width: 100%;
+}
+th {
+    background-color: rgb(228, 232, 238);
+    height: 40px;
+    text-align: center;
+}
+
+th:first-child {
+    background-color: red;
+    color: white;
+}
+
+td {
+    height: 40px;
+    text-align: center;
+}
+
+td:first-child {
+    color: red;
+}
