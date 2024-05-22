@@ -11,3 +11,4 @@
 # ## 폴더
 images/
 node_modules/
+__pycache__
