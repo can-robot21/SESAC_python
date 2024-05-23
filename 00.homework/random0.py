@@ -37,8 +37,11 @@ print("8자리 랜덤 비밀번호: ", my_text2)
 
 # 8. 강력한 비밀번호 생성(대문자, 소문자, 숫자를 각각 최소 1개이상 포함하는 8자리를 만들려면??)
 key = 8
-a=random.randint(1, 8)
-b=random.randint(1, 7)
-c=a+b
-d=random.randint(1, 6)
-print(a, b, c)
+num = random.randint(1, 6) + 1
+word1 = random.choices(word, k=num)
+num1 = 7 - num
+word2 = random.choices(low_word, k=num1)
+num2 = random.randint(1, num1)
+word3 = random.choices(number, k=num2)
+print(num, num1, num2)
+print(word1, word2, word3)
