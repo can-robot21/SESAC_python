@@ -37,11 +37,25 @@ print("8자리 랜덤 비밀번호: ", my_text2)
 
 # 8. 강력한 비밀번호 생성(대문자, 소문자, 숫자를 각각 최소 1개이상 포함하는 8자리를 만들려면??)
 key = 8
-num = random.randint(1, 6) + 1
-word1 = random.choices(word, k=num)
-num1 = 7 - num
-word2 = random.choices(low_word, k=num1)
-num2 = random.randint(1, num1)
-word3 = random.choices(number, k=num2)
+num = random.randint(1, 6) + 1 
+num1 = key - num
+num2 = random.randint(1, num1) + 1
+word1 = random.choices(word, k=num) + random.choices(low_word, k=num1) + random.choices(number, k=num2)
+my_password = random.shuffle(word1)
 print(num, num1, num2)
-print(word1, word2, word3)
+print(word1)
+# print(my_password)
+# print("강력한 비밀번호: ", my_password.random.suffle())
+
+# 8 다른 방법
+me = False
+keys = [random.randint(1, 8) for _ in range(3)]
+sum_keys = sum(keys)
+print('배열:', keys)
+print('배열합:', sum_keys)
+    
+if key == sum(keys):
+
+    print("합이 8인 랜덤 배열: ", keys)
+    my_pass=random.choices(word, k=keys[0]) + random.choices(low_word, k=keys[1]) + random.choices(number, k=keys[2])
+    print('배열 먼저 만드는 강력한 비밀번호: ', my_pass)
