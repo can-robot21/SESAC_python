@@ -1,6 +1,5 @@
 ## 파일
 *.env
-*.csv
 *.bin
 *.bak
 *.db
