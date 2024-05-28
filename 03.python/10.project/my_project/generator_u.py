@@ -44,7 +44,7 @@ def print_users(mode):
         print('파일생성 완료')
     elif mode == "2":
         # 유저 파일저장 및 화면 출력
-        with open('data_users.txt', 'w', encoding='utf-8') as file:
+        with open('data_users.csv', 'w', encoding='utf-8') as file:
             writer = csv.writer(file)
             for u in data:
                 writer.writerow(u)
