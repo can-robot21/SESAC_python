@@ -8,7 +8,7 @@ name1 = ['김', '이', '박', '최', '윤', '서', '강', '양', '정', '조', '
 name2 = ['민준', '서준', '예준', '도윤', '시우', '주원', '하준', '지호', '지후', '준서', '준우', '현우', '도현', '지훈', '건우', '서연', '서연', '지우', '서현', '민서', '하은', '하윤', '윤서', '지유', '지민', '채원', '지윤', '은서', '수아', '다은']
 cities = ['서울시 동대문구', '서울시 서대문구', '서울시 종로구', '서울시 중구', '서울시 광진구', '경기도 성남시', '경기도 부천시', '경기도 남양주시', '경기도 구리시', '인천시 남동구', '인천시 서구', '인천시 부평구', '인천시 남동구']
 streets = ['느티로 2', '금강로 333', '산마루로 24', '중앙로 245', '세종로 14', '통이로 135', '경기대로 13', '충정로 11길', '신촌로 223', '왕산로 239', '제기로 117', '천호대로 21']
-gender = ['male', 'female']
+gender_data = ['male', 'female']
 
 def users_generate(num_users):
     users_data = []
@@ -20,13 +20,19 @@ def users_generate(num_users):
         birthdate=(f"{year}-{month:02d}-{day:02d}")
         age = 2024 - year
         
-        user_data = [
-            str(uuid.uuid4()),        
-            random.choice(name1)+random.choice(name2),
-            random.choice(gender),      
+        # index 처리용
+        user_id = str(uuid.uuid4())
+        name = random.choice(name1)+random.choice(name2)
+        gender = random.choice(gender_data)
+        address = cities[random.randint(0, len(cities)-1)]+" "+streets[random.randint(0,len(streets)-1)]
+        
+        user_data = [            
+            user_id,        
+            name,
+            gender,      
             birthdate,
             age,
-            cities[random.randint(0, len(cities)-1)]+" "+streets[random.randint(0,len(streets)-1)]
+            address
         ]
         
         users_data.append(user_data)
