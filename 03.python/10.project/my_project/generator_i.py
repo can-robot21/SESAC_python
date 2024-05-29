@@ -1,5 +1,6 @@
 import random
 import csv
+import uuid
 
 # 매장 아이템 juice, coffee, cake 
 # 가격
@@ -28,24 +29,37 @@ def items_generator():
     return items_data
     
 def print_items(select_print):
+    items_data = [] # CSV 저장용 리스트
+    
+    list_data = list(data.keys())
+    list_value = list(data.values())
+    print('딕셔너리: ', list_value )
+    for i in range(len(list_value)):
+        print("대분류: ", list_data[i])
+        for j in list_value[i]:
+            for key, value in j.items():
+                items_data .append ([ str(uuid.uuid4()), key, list_data[i], value ]) 
+    
+    print("아이템 샘플 데이터: ", items_data)
+    
+        
     if select_print == '1':
-        with open('data_items.csv', 'w', encoding='utf-8') as file:
+        with open('data_item.csv', 'w', encoding='utf-8') as file:
             writer = csv.writer(file)
-            for i in data:
+            for i in items_data:
                 writer.writerow(i)
     else:
         with open('data_item.csv', 'w', encoding='utf-8') as file:
             writer = csv.writer(file)
             for i in data:
                 writer.writerow(i)
-        for i_item in data:
+        for i_item in items_data:
             print(i_item)
             
-my_choice = input("새로운 아이템 조합을 생성하시겠습니까? YES or NO ")
+my_choice = input("새로운 아이템 조합을 생성하시겠습니까? YES or NO: ")
 if my_choice.upper() == 'YES':
     data = items_generator()
     
     select_print = input('[1] 아이템 조합 저장 or [2] 아이템 조합 저장&화면출력: [1] or [2] ')
     print_items(select_print)
 
-print('[아이템 조합 생성이 종료됩니다.')
