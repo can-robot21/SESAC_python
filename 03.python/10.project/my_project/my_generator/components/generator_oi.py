@@ -38,17 +38,19 @@ def print_orderItem(print_set):
             writer = csv.writer(file)
             writer.writerrow(['orderItem_Id', 'order_id', 'item_id'])
             writer.writerrows(data)
+        print("CSV 저장 완료")
     elif print_set == 2: # CSV 파일 저장 및 화면 출력
         with open('data_orders.csv', 'w', encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerow(['orderItem_id', 'order_id', 'item_id'])
             writer.writerows(data)
+        print('CSV 저장 및 출력 완료')
         for orderItem in data:
             print(orderItem)
             
             
 
-num_oi = int(input("데이터 oderItem 숫자를 입력하세요.: "))
+num_oi = int(input("데이터 생성할 oderItem 숫자를 입력하세요.: "))
 print_set = int(input('출력 모드를 선택:(1. CSV 파일저장 2. CSV 파일 및 화면출력): '))
 data = list_orderItem(num_oi)
 print_orderItem(print_set)
