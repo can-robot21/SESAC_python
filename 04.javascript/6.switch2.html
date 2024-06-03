@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>자바스크립트로 switch-case 구문 사용하기</h1>
+    <select id="fruitSelector" onChange="displayFruit()">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="orange">Orange</option>
+    </select>
+    <div id="fruitResult"></div>
+    <script>
+        // 사용자가 해당 셀랙트 박스 바꿀때마다 해당 값을 출력
+        function displayFruit() {
+            fruitSelector = document.getElementById("fruitSelector").value;
+            fruitResult = document.getElementById("fruitResult");
+            switch (fruitSelector) {
+                case "apple":
+                    fruitResult.innerHtml="사과를 선택했습니다." // 태그를 포함한 글자
+                    break;
+                case "banana":
+                    fruitResult.innerText="사과를 선택했습니다." // 순수 글자
+                    break;
+                case "orange":
+                    fruitResult.textContent="사과를 선택했습니다." // 순수 글자
+                break;
+            }           
+        }
+
+        // 1. 빈칸을 만들어서
+        // 2. 위에 선택한 글자를
+        // 3. 해당 공간에 출력한다. 
+    </script>
+</body>
+</html>

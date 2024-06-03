@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>자바스크립트로 switch-case 구문 사용하기</h1>
+    <select id="fruitDisplay" onChange="displayFruit()">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="orange">Orange</option>
+    </select>
+    <h2 id="result">본문에 추가: </h2>
+    <script>
+        // 사용자가 해당 셀랙트 박스 바꿀때마다 해당 값을 출력
+        function displayFruit() {
+            value = document.getElementById("fruitDisplay").value;
+            console.log(value)
+            result_text = document.getElementsByid("result")
+            switch (value) {
+            case "apple":
+                var newNode = document.createElement("P");
+                newNode.textContent = "사과가 선택되었습니다."
+                document.body.appendChild(newNode);
+                break;
+                case "banana":
+                    var newNode = document.createElement("P");
+                    newNode.textContent = "바나나가 선택되었습니다."
+                    document.body.appendChild(newNode);
+                    break;
+                    case "orange":
+                        var newNode = document.createElement("P");
+                        newNode.textContent = "오렌지가 선택되었습니다."
+                        document.body.appendChild(newNode);
+                        break;
+
+           }
+           
+        }
+
+    </script>
+</body>
+</html>
