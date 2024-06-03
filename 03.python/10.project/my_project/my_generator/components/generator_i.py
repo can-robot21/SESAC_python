@@ -2,7 +2,7 @@ import random
 import uuid
 import json 
 from print import printData
-from generator_id import generate_id
+from generator_id import generate_uuid
 
 # 매장 아이템 juice, coffee, cake 
 # 가격
@@ -17,16 +17,18 @@ json_data = {
         { '바닐라 쉐이크': 3800, '초코 쉐이크': 4200, '그린티 쉐이크': 4200, '요거트 쉐이크': 4500, '딸기 쉐이크': 4800 }
 }
 items = []
-item = ()
 
-def generate_i(num):   
-    for category, items_list in json_data.items():
-        for item_name, item_price in items_list.json_items():
-    
-    item_id = (generate_id(), )
+def generate_i():   
+    for category, items_info in json_data.items():
+        for item_name, item_price in items_info.items():
+            item_id = generate_uuid()
+            items.append((item_id, item_name, category, item_price))
+    print("메뉴 정리: ", items)
+    return items
             
 if __name__  == "__main__":
-    num_items = int(input("생성 아이템 수를 입력하세요.: "))
-    data = generate_i(num_items)
-    
-    printData("i", num_items)
+    generate_items = input("아이템 생성하시겠습니까?:(YES or No) ")
+    if generate_items.upper() == "YES":
+        data = generate_i()
+        num_items = len(data)
+        printData("i", num_items)
