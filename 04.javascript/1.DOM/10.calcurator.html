@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div 계산기</title>
+    <link rel="stylesheet" href="cal.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="title">계산기</div>
+    <div class="calculator">
+        <input type="text" id="result" readonly>
+        <button onclick="appendNumber(this.innerText)">7</button>
+        <button onclick="appendNumber(this.innerText)">8</button>
+        <button onclick="appendNumber(this.innerText)">9</button>
+        <button onclick="appendSymbol(this.innerText)">+</button>
+        <button onclick="appendNumber(this.innerText)">4</button>
+        <button onclick="appendNumber(this.innerText)">5</button>
+        <button onclick="appendNumber(this.innerText)">6</button>
+        <button onclick="appendSymbol(this.innerText)">-</button>
+        <button onclick="appendNumber(this.innerText)">1</button>
+        <button onclick="appendNumber(this.innerText)">2</button>
+        <button onclick="appendNumber(this.innerText)">3</button>
+        <button onclick="appendSymbol(this.innerText)">*</button>
+        <button onclick="appendNumber(this.innerText)">0</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="clearResult()">C</button>
+        <button onclick="appendSymbol(this.innerText)">/</button>
+    </div>
+    <script>
+        function appendNumber(number) {
+            document.getElementById('result').value += number;
+        }
+
+        function clearResult() {
+            document.getElementById('result').value = "";
+        }
+
+        function calculate() {
+            let input = document.getElementById('result');
+            try {
+                let result = eval(input.value);
+                input.value = result;
+            } catch (error) {
+                document.getElementById('result').value = "ERROR";
+            }
+        }
+        function appendSymbol(symbol) {
+            // (수정필요)입력한 부호가 중복이면 재입력하지 못하게 
+            input = document.getElementById('result');
+            lastInput = input.value.slice(-1);
+            console.log(symbol)
+            console.log(lastInput)
+            
+            if (lastInput !== '+' && lastInput !== '-' && lastInput !== "*" && lastInput == "/" ) {
+                input.value += symbol
+            } else {
+                last = input.value.slice() // 수정필요
+                console.log("라스트", last)
+                input.value = last+symbol
+            }
+
+        }
+
+        function isSymbol() {
+            // 심볼인지 확인해 ( true / false )
+            input = document.getElementById('result');
+            lastInput = input.value.slice(-1);
+            if (isSymbol(symbol)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    </script>
+
+</body>
+</html>

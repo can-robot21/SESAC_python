@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>To Do 리스트</h1>
+    <input type="text" id="toDo" placeholder="할일을 입력하시오.">
+    <button id="addList">추가</button>
+    <!-- 리스트 출력할 공간 -->
+    <div id="toDoList">
+        <ul id="todo-list"></ul>
+    </div>
+
+    <script>
+        // 1. Add 버튼 통해 입력한 글짜를 아래 리스트에 추가한다. 
+        // 1-1. Add 버튼에 이벤트 등록하기
+
+        // 1-2. 입력할 글자를 가져온다.
+        // 1-3. 가져온 글자를 리스트에 추가한다.
+        // 새로운 노드를 만들어야 함. li 와 해당 데이터를 갖고 있는 'DOM 요소(element) = 노드'를 만듬
+        // 위에 있는 todo-list 에 ul 아래 차일드( child ) 요소를 추가하기.
+
+        document.getElementById('addList').addEventListener('click', function(event) {
+            var toDoList = document.getElementById('todo-list')
+            var toDoItem = document.getElementById('toDo').value
+            if (toDoItem !== "") {
+                const newItem = document.createElement('li');
+                newItem.innerHTML = ('<input type="checkbox" class="doList">')+toDoItem+('<span id="doList">[삭제]<span>'); // 새 아이템에 텍스트 추가
+    
+                toDoList.appendChild(newItem); // 아이템 child로 추가
+    
+                // 입력된 글자 입력컬럼 초기화 
+                document.getElementById('toDo').value = ""
+            }
+
+        });
+
+        <!-- document.getElementById('doList').addEventListener('click', function() {
+            var toDoList = document.getElementById('todo-list')
+            var list = document.getElementsByClassName('doList')
+
+            let a = toDoList.indexOf(list)
+            list.splice(a, 1)
+        }); -->
+    </script>
+</body>
+</html>

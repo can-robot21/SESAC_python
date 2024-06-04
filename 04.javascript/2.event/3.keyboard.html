@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="myInput" placeholder="press any key">
+    <div id="myElement" style="width:100px; height:1500px; background:gray">여기요</div>
+
+    <script>
+        document.addEventListener('keydown', function(event) {
+            // 
+            console.log("클릭한 키: ", event.key)
+        })
+        document.getElementById('myInput').addEventListener('focus', function() {
+            console.log("포커싱")
+        })
+        document.getElementById("myElement").addEventListener('mouseover', function() {
+            console.log("마우스 오버")
+        })
+        
+        document.getElementById("myElement").addEventListener('mouseout', function() {
+            console.log("마우스 나감")
+        })
+        document.getElementById("myInput").addEventListener("change", function() {
+            console.log("입력값 변경됨")
+        })
+        document.getElementById('myInput').addEventListener("blur", function() {
+            console.log("입력창 비활성화")
+        })
+        document.getElementById('myElement').addEventListener('contextmenu', function(event) {
+            event.preventDefault(); // 이벤트 기본 기능 일시 중단
+            alert("우클릭 금지")
+            console.log("우클릭 금지 실행 중")
+        });
+        window.addEventListener('resize', function() {
+            const width = window.innerWidth
+            const height = window.innerHeight
+            console.log('윈도우 크기가 변경되었습니다.가로 ${width}, 세로 ${height}')
+        });
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.pageYOffset
+            console.log('스크롤 중', scrollPosition)
+        });
+
+    </script>
+</body>
+</html>

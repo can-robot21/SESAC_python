@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div 계산기</title>
+    <link rel="stylesheet" href="cal.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="title">계산기</div>
+    <div class="calculator">
+        <input type="text" readonly="입력대기 중입니다." id="inputText">
+        <button class="inputResult" onclick="buttonInt(event)" value="7">7</button>
+        <button class="inputResult" onclick="buttonInt(event)" value="8">8</button>
+        <button class="inputResult" onclick="buttonInt(event)" value="9">9</button>
+        <button class="inputResult" onclick="buttonInt(event)" value="+">+</button>
+        <button class="inputResult" onclick="buttonInt(event)" value="4">4</button>
+        <button class="inputResult" onclick="buttonInt(event)" value="5">5</button>
+        <button class="inputResult" onclick="buttonInt(event)" value="6">6</button>
+        <button class="inputResult" onclick="buttonInt(event)" value="-">-</button>
+        <button class="inputResult" onclick="buttonInt(event)" value="1">1</button>
+        <button class="inputResult" onclick="buttonInt(event)" value="2">2</button>
+        <button class="inputResult" onclick="buttonInt(event)" value="3">3</button>
+        <button class="inputResult" onclick="buttonInt(event)" value="*">*</button>
+        <button class="inputResult" onclick="buttonInt(event)" value="0">0</button>
+        <button class="inputResult" onclick="buttonSum(event)" value="=">=</button>
+        <button class="inputResult" onclick="buttonClear(event)" value="C">C</button>
+        <button class="inputResult" onclick="buttonInt(event)" value="/">/</button>
+    </div>
+    <script>
+        var sumNumber = 0; // 연산결과저장
+        var codeButton = ""; // 직전 연산 저장
+
+        function buttonInt(event) {
+            var inputScreen = document.getElementById('inputText');
+            var inputInt = event.target.value;
+            console.log(inputInt)
+            inputScreen.value += inputInt
+        }
+
+        function buttonSum(event) {
+            var inputText = document.getElementById('inputText').value;
+            var result = eval(inputText)
+            document.getElementById('inputText').value = result;
+        }  
+    
+        function buttonClear() {
+            // 모든 변수 초기화
+            sumNumber = 0; // 연산결과 초기화
+            codeButton = ""; // 직전 연산 초기화
+            var inputScreen = document.getElementById('inputText');
+
+            
+            // 입력창 초기화
+            inputScreen.value = "";
+        }
+    
+    </script>
+    
+</body>
+</html>

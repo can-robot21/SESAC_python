@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="myTextArea">여기 있는 글짜를 복사해 보세요.</textarea>
+    <script>
+        document.getElementById('myTextArea').addEventListener('copy', function() {
+            console.log('텍스트 불펌 중!!')
+            alert('허락없이 복사금지 XXXXX')
+        });
+
+        document.getElementById('myTextArea').addEventListener('paste', function(){
+            console.log('어디서 불펌한 내용 붙이는 중')
+            alert("불펌 첨부금지 XXXXX")
+        });
+        
+        window.addEventListener('beforeunload', function() {
+            event.preventDefault()
+            event.returnValue = "가지마세요."
+        });
+    </script>
+</body>
+</html>

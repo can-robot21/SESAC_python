@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="myForm">
+        <input type="text" name="name" placeholder="이름을 입력해 주세요.">
+        <button type=""submit>제출</button>
+    </form>
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function() {
+            event.preventDefault();
+            console.log('폼 제출 금지')
+        })
+        window.onafterprint = function() {
+            console.log("프린팅 완료")
+        }
+    </script>
+</body>
+</html>
