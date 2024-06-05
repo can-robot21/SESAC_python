@@ -23,7 +23,7 @@
         // 새로운 노드를 만들어야 함. li 와 해당 데이터를 갖고 있는 'DOM 요소(element) = 노드'를 만듬
         // 위에 있는 todo-list 에 ul 아래 차일드( child ) 요소를 추가하기.
 
-        document.getElementById('addList').addEventListener('click', function(event) {
+        document.getElementById('addList').addEventListener('click', function() {
             var toDoList = document.getElementById('todo-list')
             var toDoItem = document.getElementById('toDo').value
             if (toDoItem !== "") {
@@ -34,15 +34,15 @@
     
                 // 입력된 글자 입력컬럼 초기화 
                 document.getElementById('toDo').value = ""
+
                 // 삭제버튼 추가 
                 var deleteButton = document.createElement('button');
                 deleteButton.textContent = '삭제';
                 deleteButton.addEventListener('click', function(){
-                    toDoList.removeChild(newItem)
+                    toDoList.removeChild(newItem)  
                 });
                 newItem.appendChild(deleteButton);
             }
-
         });
 
     </script>
