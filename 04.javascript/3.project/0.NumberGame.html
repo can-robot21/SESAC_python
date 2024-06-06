@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="0.numberGame.css">
+</head>
+<body>
+    <div id="mainDiv">
+        <div id="titleTopS">
+            <h2>숫자 게임</h2>
+        </div>
+        <div id="tool">
+            <!-- 숫자 div 생성할 곳 -->
+        </div>
+    </div>
+    <script>
+        // 숫자 게임 작성중
+        var numberBox = document.getElementById('tool')
+        var numberItem = ""
+        // 9개의 div 생성
+        for (i =0; i < 9; i++) {
+            var newDiv = document.createElement('div');
+            numberItem = i + 1;
+            newDiv.textContent = numberItem;
+            numberBox.appendChild(newDiv);
+        }
+    </script>
+</body>
+</html>

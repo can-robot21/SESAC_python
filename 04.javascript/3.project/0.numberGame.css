@@ -1,0 +1,52 @@
+#mainDiv {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#titleTop {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#tool {
+    display: inline-block;
+    justify-self: auto;
+    width: 348px;
+    height: 348px;
+    border: 1px solid rgb(179, 169, 169);
+    background-color: gainsboro;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+#tool div {
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    color:rgb(117, 125, 153);
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgb(164, 166, 170);
+    text-align: center;
+    line-height: 90px;
+    font-size: 30px;
+    border-radius: 5px;
+}
+
+#tool div:nth-of-type(1), #tool div:nth-of-type(2),
+#tool div:nth-of-type(4), #tool div:nth-of-type(5),
+#tool div:nth-of-type(7), #tool div:nth-of-type(8) {
+    margin-right: 10px;
+}
+
+#tool div:nth-of-type(1), #tool div:nth-of-type(2),
+#tool div:nth-of-type(3), #tool div:nth-of-type(4),
+#tool div:nth-of-type(5), #tool div:nth-of-type(6) {
+    margin-bottom: 10px;
+}
+
+#tool div:nth-of-type(1), #tool div:nth-of-type(2), #tool div:nth-of-type(3) {
+    margin-top: 10px
+}
