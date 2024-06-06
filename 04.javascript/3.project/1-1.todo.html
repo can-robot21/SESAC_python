@@ -34,30 +34,29 @@
             if (toDoItem !== "") {
                 const newItem = document.createElement('li');
 
-                // 채크박스로 줄긋기
+                // 채크박스로 줄긋기ㄹ
                 var checkBox = document.createElement('input');
                 checkBox.type = 'checkbox'
-                checkBox.addEventListener('change', () => {
-                    console.log(textNode)
-                    <!-- var textNode = newItem.childNode[0]; -->
-                    if (this.checked) {
-                        textNode.style.textDecoration = 'line-throug';
+                checkBox.addEventListener('change', (event) => {
+                    console.log(textSpan)
+                    if (event.target.checked) {
+                        textSpan.style.textDecoration = 'line-through';
                     } else {
-                        textNode.style.textDecoration = 'none'
+                        textSpan.style.textDecoration = 'none'
                     }
-                })  
+                });
                 newItem.appendChild(checkBox)    
                 
                 // 텍스트 부분 node 구성
+                var textSpan = document.createElement('span')
                 var textNode = document.createTextNode(toDoItem);
-                newItem.appendChild(textNode);
-    
+                textSpan.appendChild(textNode);
+                newItem.appendChild(textSpan);
+                console.log("추가하는 텍스트&스타일",textSpan, textSpan.style)                
                 toDoList.appendChild(newItem); // 아이템 child로 추가
-    
+                
                 // 입력된 글자 입력컬럼 초기화 
                 document.getElementById('toDo').value = ""
-
-                // 체크박스로 텍스트 줄긋기
                 
 
                 // 삭제버튼 추가 
