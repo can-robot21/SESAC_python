@@ -12,10 +12,24 @@
             height: 100vh;
             margin: 0;
             font-size: 20px;
+            flex-direction: column;
         }
         button {
             width: 150px;
             height: 50px;
+        }
+        #buttonRgb {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        #showRgb {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.5);
+            height: 45px;
+            padding: 10px;
+            border-radius: 5px;
         }
 
     </style>
@@ -24,27 +38,28 @@
     <!-- 버튼 센터에 배치 -->
     <!-- 버튼 클릭시 렌덤값으로 RGB 값 생성
     해당 값으로 BG 값으로 설정 -->
-
-        <button id="bg-changer">배경색 바꾸기</button>
+        <div id="buttonRgb">
+            <button id="bg-changer">배경색 바꾸기</button>
+        </div>
         <div id="showRgb"></div>
 
     <script>
         function getRandomColor() {
-            const r = Math.random() * 255;
-            const g = Math.random() * 255;
-            const b = Math.random() * 255;
-            console.log('${r}')
-            console.log('${g}')
-            console.log('${b}')
+            const r = Math.floor(Math.random() * 255);
+            const g = Math.floor(Math.random() * 255);
+            const b = Math.floor(Math.random() * 255);
+            console.log(`${r}`)
+            console.log(`${g}`)
+            console.log(`${b}`)
             return `rgb(${r}, ${g}, ${b})`
         }
 
         document.getElementById('bg-changer').addEventListener('click', function() {
             const randomColor = getRandomColor();
             document.body.style.backgroundColor = randomColor;
-            var bgText = document.getElementById(showRgb)
+            var bgText = document.getElementById('showRgb')
 
-            bgText = appendChild(showRgb)
+            bgText.textContent = randomColor
         })
     </script>
 </body>
