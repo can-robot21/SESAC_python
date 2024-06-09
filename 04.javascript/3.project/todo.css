@@ -64,8 +64,15 @@ input[type="checkbox"] {
 }
 
 #addList {
+    width: 80px;
     background-color: lightslategray;   
     color: white; 
+}
+
+#reset {
+    width: 80px;
+    background-color: red;
+    color: white;
 }
 
 #buttonLayout {

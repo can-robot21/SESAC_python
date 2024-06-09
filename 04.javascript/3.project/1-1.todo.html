@@ -18,7 +18,7 @@
         <input type="text" id="toDo" placeholder=" 할 일을 입력하시오."><br>
         <div id="buttonLayout">
             <button id="addList">추가</button>
-            <!-- <button id="reset">전체삭제</button> -->
+            <button id="reset">전체삭제</button>
         </div>
         <!-- 리스트 출력할 공간 -->
         <div id="toDoList">
@@ -71,14 +71,12 @@
             }
         });
 
-        <!-- // 전체삭제
-        var resetButton = document.getElementById('reset')
-        resetButton.addEventListener('click', () => {
-            toDoList = ""
-        }) -->
+        // 전체삭제
+        document.getElementById('reset').addEventListener('click', function() {
+            var toDoList = document.getElementById('todo-list'); // Corrected ID here
+            toDoList.innerHTML = ''; // Clearing the list content
+        })
         
-
-
     </script>
 </body>
 </html>
