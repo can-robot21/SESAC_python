@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR:wght@200..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="todo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">    <link rel="stylesheet" href="todo.css">
 
     <title>Document</title>
 </head>
@@ -17,7 +16,10 @@
             <h2>To Do 리스트</h2>
         </div>
         <input type="text" id="toDo" placeholder=" 할 일을 입력하시오."><br>
-        <button id="addList">추가</button><br>
+        <div id="buttonLayout">
+            <button id="addList">추가</button>
+            <!-- <button id="reset">전체삭제</button> -->
+        </div>
         <!-- 리스트 출력할 공간 -->
         <div id="toDoList">
             <ul id="todo-list"></ul>
@@ -34,7 +36,7 @@
             if (toDoItem !== "") {
                 const newItem = document.createElement('li');
 
-                // 채크박스로 줄긋기ㄹ
+                // 채크박스로 줄긋기
                 var checkBox = document.createElement('input');
                 checkBox.type = 'checkbox'
                 checkBox.addEventListener('change', (event) => {
@@ -68,6 +70,14 @@
                 newItem.appendChild(deleteButton);
             }
         });
+
+        <!-- // 전체삭제
+        var resetButton = document.getElementById('reset')
+        resetButton.addEventListener('click', () => {
+            toDoList = ""
+        }) -->
+        
+
 
     </script>
 </body>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>로딩</h1>
+    <div id="contentContainer">
+
+    </div>
+    <button id="loadButton">컨텐츠 불러오기</button>
+    <script>
+        $(document).ready(function() {
+            $('#loadButton').click(function() {
+                data = "";
+                // 버튼 클릭되었을때 실행
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/posts/1',
+                    method: 'GET',
+                    success: function(myData) {
+                        // 성공했을때
+                        // console.log(data)
+                        $('#contentContainer').html(
+                            '<p>Title:' + myData.title + '</p>' +
+                            '<p>body:' + myData.body + '<p>'
+                        )
+                    },
+                    error: function() {
+                        // 실패했을때 동작
+                        console.error('알수 없는 오류')
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

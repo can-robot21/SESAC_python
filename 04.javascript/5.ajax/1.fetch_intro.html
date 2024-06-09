@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>로딩</h1>
+    <div id="contentContainer">
+
+    </div>
+    <button id="loadButton">컨텐츠 불러오기</button>
+    <script>
+        // $(document).ready(function() {
+            // $('#loadButton').click(function() {
+                // 버튼 클릭되었을때 실행
+                // $.ajax({
+                    // url: 'https://jsonplaceholder.typicode.com/posts/1',
+                    // method: 'GET',
+                    // success: function(data) {
+                        // 성공했을때
+                        // console.log(data)
+                        // $('#contentContainer').html(
+                        //     '<p>Title:' + myData.title + '</p>' +
+                        //     '<p>body:' + myData.body + '<p>'
+                        // )
+                    // },
+                    // error: function() {
+                        // 실패했을때 동작
+                        // console.error('알수 없는 오류')
+                    // }
+                // })
+            // })
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('loadButton').addEventListener('click', function() {
+                fetch('https://jsonplaceholder.typicode.com/posts/1')
+                    .then(function(response) {
+                        if (!response) {
+                            throw new Error('네트워크 오류')
+                        }
+                        return response.json();
+                    })
+                    .then(function(data){
+                        document.getElementById('contentContainer').innerHTML = 
+                            '<p>Title: ' + data.Title + '</p>'+
+                            '<p>Body: ' + data.body + '</p>'
+                    })
+                    .catch(function() {
+                        console.error('처리 중 오류:'+error)
+                    })
+            })
+        })
+    </script>
+</body>
+</html>

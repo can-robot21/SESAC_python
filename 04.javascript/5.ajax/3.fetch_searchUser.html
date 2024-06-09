@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>사용자 검색 페이지</h1>
+        <input type="text" id="userId" placeholder="사용자 번호 입력">
+        <button onclick = 'searchUser()'>"검색"</button>
+        <div id="resultDiv"></div>
+
+    </div>
+    <script>
+        function searchUser() {
+            const userId = document.getElementById('userId').value; // 위에서 가져온 사용자 아이디
+            const url = 'https://jsonplaceholder.typicode.com/users/' + userId;
+
+            fetch(url)
+                .then(response => response.json()) 
+                .then(function(user) {
+                    displayUser(user)
+                })
+                .catch(error => console.log('에러 발생: ', error))
+        }
+
+        // fetch 가져오기
+
+        function displayUser(user) {
+            // 출력함수 구현
+            // 1. 결과출력 div
+            const resultDiv = document.getElementById('resultDiv');
+            resultDiv.innerHtml = '';
+
+            // 2. 사용자 정보 담은 HTML 생성
+            const userInfoHtml = `
+                <p>ID : ${user.id}</p>
+                <p>Name : ${user.name}</p>
+                <p>Email: ${user.email} </p>
+                <p>Address: ${user.address}</p>
+            `;
+            // 결과출력
+            resultDiv.innerHTML = userInfoHtml;
+        }
+    </script>
+</body>
+</html>

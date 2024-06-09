@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 제이쿼리 호출 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h1 id="myHeading">헬로우, jquery</h1>
+    <h2 id="changeText">change Text</h2>
+    <script>
+        // document.addEventListener('DOMContentLoaded', function() {
+        //    document.getElementById('changeText').addEventListener('click', function() {
+        // document.getElementById('myHeading').textContent("글자 바꾸기");
+        //    });
+        // })
+
+        $(document).ready(function() {
+            $('#changeText').click(function() {
+                $('#myHeading').text('글자 바꾸기')
+            })
+        })
+    </script>
+</body>
+</html>

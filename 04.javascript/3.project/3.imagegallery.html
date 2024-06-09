@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .imgs {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. 헤딩 작성 : 이미지 갤러리 -->
+    <!-- 2. 이미지 3개 불러오기(div 에 담고 가로배치하고 균일한 크기로 ...100px 등) -->
+    <!-- 3. 클릭 이벤트를 추가해서, 클릭시 원본 이미지 보여주기 -->
+    <h2>이미지 갤러리</h2>
+    <div id="mainFrame">
+        <img src="img/fun1.jpg" alt="" class="gallery imgs" id="img1">
+        <img src="img/fun2.jpg" alt="" class="gallery imgs" id="img2"> 
+        <img src="img/fun3.jpg" alt="" class="gallery imgs" id="img3">     
+    </div>
+    <button id="imgShow">원본이미지</button>  <br>
+    <img src="" alt="" id="large-image">
+    
+    <script>
+        const img1 = document.getElementById('img1')
+        const img2 = document.getElementById('img2')
+        const img3 = document.getElementById('img3')
+
+        // 클릭이벤트
+        // img1.addEventListener('click', function() {
+        //    const largeImg = document.getElementById('large-image');
+        //    largeImg.src = img1.src;
+        // })
+        // img2.addEventListener('click', function() {
+        //    const largeImg = document.getElementById('large-image');
+        //    largeImg.src = img2.src;
+        // })
+        // img3.addEventListener('click', function() {
+        //    const largeImg = document.getElementById('large-image');
+        //    largeImg.src = img3.src;
+        // })
+
+        // for ~ loop 사용( 수정 중 )
+        // var images = [img1, img2, img3];
+
+        // for (let i = 0; i < images.length; i++) {
+
+        //    images[i].addEventListener('click', function() {
+        //        var largeImg = document.getElementById('large-image');
+        //        largeImg.src = images[i].src;
+        //    });
+        // }
+
+        // forEach 사용하기
+        // document.querySelectorAll('.gallery imgs').forEach(function(image) {
+        //    image.addEventListener('click', function() {
+        //       const largeImg = document.getElementById('large-image');
+        // largeImg.src = image.src;
+        //    });
+        // });
+        document.querySelectorAll('.gallery.imgs').forEach(function(image) {
+            image.addEventListener('click', function() {
+                const largeImg = document.getElementById('large-image');
+                largeImg.src = image.src;
+            });
+        })
+    </script>
+    
+</body>
+</html>
