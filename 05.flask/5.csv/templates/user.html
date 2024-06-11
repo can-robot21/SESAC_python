@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #listData {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        #listData td th {
+            text-align: center;
+            border: 1px solid black;
+            height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>데이터 출력</h2>
+    <table id="listData">
+        <tr>
+            {% for header in headers %}
+            <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+        {% for user in users %}
+        <tr>
+            {% for cell in user %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <!-- 페이지 네이션 -->
+    {% for no in range(total_pages) %}
+    <span><a href="/{{no + 1}}">{{ no +1 }}</a></span>
+    {% endfor %}
+    <p> Total Pages: {{ total_pages }} </p>
+</body>
+</html>
