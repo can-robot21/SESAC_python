@@ -6,7 +6,7 @@ const port = 3000;
 
 // 정적 파일 제공을 위한 미들웨어 등록
 app.use(express.static(path.join(__dirname, '04.javascript')));
-app.use(express.static(path.join(__dirname, '04.javascript/3.project')));
+app.use(express.static(path.join(__dirname, 'css')));
 
 // 환경설정
 app.get('/', (req, res) => {

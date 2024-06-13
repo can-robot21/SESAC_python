@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Ajax 로 DogList 작성해 이미지 호출하기</h2>
+    <select name="picSelect" id="selectDog">
+
+    </select>
+    <button id="fetchDog">이미지 패치</button>
+    <div id="picDog"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dogList = fetch('https://dog.ceo/api/breeds/list/all');
+            console.log(dogList);
+            var numList = dogList.length()
+            console.log(length(numList))
+            document.addEventListener('selectDog', function() {
+                // ajax 로 Dog 이름 리스트 작성하기
+                // 셀렉트 박스에서 선정한 Dog 이미지 호출하기
+                // 선택한 Dog 이미지 출력하기
+                
+            });
+
+        });
+    </script>
+</body>
+</html>

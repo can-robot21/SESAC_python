@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            background: lightgray;
+        }
+        td {
+            height: 40px;
+        }
+
+        tr {
+            height: 40px;
+        }
+        form {
+            margin-bottom: 20px;
+
+        }
+        input[type="text"],
+        input[type="number"] {
+            padding: 10px;
+            margin-right: 10px;
+            border : 1px solid gray;
+            height: 30px;
+            width: 500px;
+        }
+        input[type="submit"] {
+            padding:10px 15px;
+            background-color: green;
+            color: white;
+            width: 100px;
+            height: 50px;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>핼로우 플라스크</h2>
+    <form action="/user" method="GET">
+        <input type="text" name="name" placeholder="검색값을 입력하세요!">
+        <input type="number" name="age" placeholder="나이를 입력하세요">
+        <input type="submit" id="subButton" value="Search">
+    </form>
+    <table border="1" width="500px" id='t'>
+        <tr height="30px">
+            <th>이름</th>
+            <th>나이</th>
+            <th>폰번호</th>
+        </tr>
+        {% for u in users %}
+        <tr height="30px">
+            <td>{{ u['name'] }}</td>
+            <td>{{ u['age'] }}</td>
+            <td>{{ u['phone'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

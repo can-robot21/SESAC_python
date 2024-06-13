@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>핼로우 플라스크</h2>
+    <p> {{ users }} </p>
+    <ul>
+        {% for u in users %}
+            <li> {{ u['name'] }} </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

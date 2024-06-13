@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            color: black; 
+            text-decoration: none;
+            outline: none;
+        }
+        a:hover, a:active {
+            text-decoration: none;
+            color: #fff;
+            background-color: #f59000;
+        }
+        #inputText {
+            width: 600px;
+            height: 40px;
+            margin-bottom: 20px;
+            margim-left: 20px;
+        }
+        #sendButton {
+            width: 80px;
+            height: 44px;
+            background-color: green;
+            color: white;
+            border: 0 ;
+        }
+        #listData {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        #listData td, #listData th {
+            text-align: center;
+            border: 1px solid black;
+            height: 30px;
+            padding: 0;
+        }
+        #listData th {
+            text-align: center;
+            border: 1px solid black;
+            height: 30px;
+            background-color: black;
+            color: white;
+            height: 40px
+            padding: 0;
+        }
+        #listData th a {
+            background-color: lightgray;
+        }
+        #pageNo a {
+            width: 50px;
+            padding: 5px;
+            border:1px solid gray;
+            margin-botton: 40px
+        }
+
+    </style>
+</head>
+<body>
+    <h2>데이터 출력</h2>
+    <form action="/" method="GET">
+        <input type="text" name="name" id="inputText" plasceholder="검색값을 입력하세요">
+        <input type="submit" name="search" id="sendButton">
+    <table id="listData">
+        <tr>
+            {% for header in headers %}
+                {% if header != "Id" and header != "Address" %}
+                    <th>{{ header }}</th>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% for user in users %}
+        <tr>
+            {% for key, value in user.items() %}
+                {% if key != 'Id' and key != 'Address' %}
+                    <td><a href='/user/{{ user["Id"] }}'>{{ value }}</a></td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <!-- 페이지 네이션 -->
+    {% for no in range(total_pages) %}
+    <span id = 'pageNo'><a href="/{{no + 1}}">{{ no + 1 }}</a></span>
+    {% endfor %}
+    <p> Total Pages: {{ total_pages }} </p>
+</body>
+</html>

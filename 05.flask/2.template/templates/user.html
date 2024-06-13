@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>사용자 HTML 페이지</h2>
+    <p> 안녕하세요 {{ username }} 님!! </p>
+    <p> 소개 페이지</p>
+    <ol>
+        {% for user in content %}
+            {% if user == 'bill' %}
+                <li><strong> {{ user }} </strong></li>
+            {% else %}
+                <li> {{ user }} </li>
+            {% endif %}
+        {% endfor %}
+
+    </ol>
+</body>
+</html>

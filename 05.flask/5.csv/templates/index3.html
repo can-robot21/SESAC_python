@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            color: black; 
+            text-decoration: none;
+            outline: none;
+        }
+        a:hover, a:active {
+            text-decoration: none;
+            color: #fff;
+            background-color: #f59000;
+        }
+
+        #listData {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        #listData td, #listData th {
+            text-align: center;
+            border: 1px solid black;
+            height: 30px;
+        }
+        #listData th {
+            text-align: center;
+            border: 1px solid black;
+            height: 30px;
+            background-color: black;
+            color: white;
+            height: 40px
+        }
+        #searchItem {
+            width: 600px;
+            height: 30px;
+            margin-bottom: 20px;
+            padding: 5px;
+        }
+        #searchButton {
+            width: 80px;
+            height: 42px;
+            background-color: green;
+            color: white;
+            border: 0;
+            margin-bottom: 20px;
+
+        }
+        #pageNo a {
+            width: 40px;
+            padding: 5px;
+            border:1px solid gray;
+            margin-botton: 40px
+        }
+
+    </style>
+</head>
+<body>
+    <h2>딕셔너리 스타일 데이터 처리</h2>
+    <form id="searchUser" action="/" method="GET">
+        <input id="searchItem" type="text" plasceholder="검색데이터를 입력해주세요" name="name">
+        <input id="searchButton" type="submit" value="Search">        
+    </form>
+    <table id="listData">
+        <tr>
+            {% for header in headers %}
+            <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+        {% for user in users %}
+        <tr>
+            {% for cell in user.values() %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <!-- 페이지 네이션 -->
+    {% for no in range(total_pages) %}
+    <span id="pageNo"><a href="/{{no + 1}}">{{ no +1 }}</a></span>
+    {% endfor %}
+    <p> Total Pages: {{ total_pages }} </p>
+</body>
+</html>

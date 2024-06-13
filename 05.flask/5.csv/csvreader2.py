@@ -20,11 +20,11 @@ def index(page=1):
     # print("출력: ", csv_data)
     headers = csv_data[0]
     
-    start_index = (page - 1) * per_page
+    start_index = (page - 1) * per_page + 1
     end_index = start_index + per_page
     
     total_pages = (len(csv_data) + per_page -1) // per_page
-    return render_template("user.html", headers=headers, users=csv_data[start_index:end_index], total_pages= total_pages)
+    return render_template("index2.html", headers=headers, users=csv_data[start_index:end_index], total_pages= total_pages)
 
 if __name__ == '__main__':
     load_csv_data('./user.csv')
