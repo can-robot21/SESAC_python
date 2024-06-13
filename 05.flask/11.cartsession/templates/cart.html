@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>장바구니</h2>
+    <table boreder='1px'>
+        <tr>
+            <th>상품명</th>
+            <th>가격</th>
+            <th>숫자</th>
+            <th> - </th>
+        </tr>
+    </tr>
+    {% for item_name, item_info in cart_items.items() %}
+    <tr>
+        <td> {{ item_info['name'] }}</td>
+        <td> {{ item_info['price'] }}</td>
+        <td> {{ item_info['quantity'] }}</td>
+        <td> <a href="{{ url_for('remove_item_from_cart', item_name=item_info['name']) }}">[삭제]</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+    <a href="{{ url_for('clear_cart')}}"> [비우기] </a>    
+
+</body>
+</html>
