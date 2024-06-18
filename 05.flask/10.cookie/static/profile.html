@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="profile">
+        <tr>
+            <th>분류</th>
+            <th>내용</th>
+        </tr>
+            
+    </table>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // DOM이 완전히 로드된 후 실행됩니다.
+                fetch('/profile', {
+                    method: 'GET'
+                }).then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success' && data.user) {
+                        const profile = document.getElementById('profile');
+                        // 사용자 이름과 ID를 테이블에 추가합니다.
+                        profile.innerHTML += `
+                            <tr><td>이름</td><td>${data.user.name}</td></tr>
+                            <tr><td>ID</td><td>${data.user.id}</td></tr>
+                        `;
+                    } else {
+                        alert('프로필 정보를 불러오는 데 실패했습니다.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('프로필 정보를 불러오는 중 문제가 발생했습니다.');
+                });
+            });
+        </script>
+            </body>
+</html>
+

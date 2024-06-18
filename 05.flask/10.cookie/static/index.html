@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>로그인</h2>
+    <form onsubmit="login(event)">
+        <label for="id">아이디:</label>
+        <input type="text" id="id" name="id" placeholder="ID를 입력하세요" required><br>
+        
+        <label for="password">패스워드:</label>
+        <input type="password" id="password" name="password" placeholder="Password를 입력하세요" required><br>
+        <button type="submit">로그인</button>
+    </form>
+
+    <script>
+        function login(event) {
+            event.preventDefault(); // 폼 기본 제출 막기
+            const id = document.getElementById('id').value;
+            const password = document.getElementById('password').value;
+
+            fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `id=${encodeURIComponent(id)}&password=${encodeURIComponent(password)}`
+            }).then(response => response.json())
+            .then(data => {
+                if(data.status === 'success') {
+                    window.location.href = data.redirect; // 로그인 성공 시 프로필 페이지로 리다이렉션
+                } else {
+                    alert(data.message); // 실패 메시지 표시
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('로그인 처리 중 문제가 발생했습니다.');
+            });
+        }
+    </script>
+</body>
+</html>
