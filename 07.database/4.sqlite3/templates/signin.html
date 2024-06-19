@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}LOGIN PAGE{% endblock %}
+
+{% block content %}
+<H1>SignIn Page</H1>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p style="color:blue">{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<form method="POST">
+    <label for="username">Username:</label>
+    <input type="text" name="username" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" required>
+    <label for="email">Email:</label>
+    <input type="text" name="email" required>
+    <br>
+    <button type="submit">Signin</button>
+</form>
+<p>계정이 있는 경우 여기를 <a href="{{ url_for('login') }}">클릭</a>하세요.</p>
+{% endblock %}

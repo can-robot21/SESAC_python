@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}LOGIN PAGE{% endblock %}
+
+{% block content %}
+<H1>View Page</H1>
+    {% for user in users %}
+        <p>Username: {{ user.username }}, Password: {{ user.password }}, Email: {{ user.email }}</p>
+    {% endfor %}
+{% endblock %}
