@@ -6,6 +6,8 @@
 *.gitignote
 *.sql
 *.pdf
+*.csv
+*.exe
 
 # ## 폴더
 images/
