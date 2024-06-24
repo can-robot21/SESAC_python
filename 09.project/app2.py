@@ -12,7 +12,7 @@ def get_db_connection():
 
 @app.route('/')
 def serve_index():
-    return send_from_directory('static', 'index.html')
+    return app.send_static_file('index.html')
 
 @app.route('/api/stores')
 def get_stores():

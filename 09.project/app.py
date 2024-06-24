@@ -7,7 +7,6 @@ DATABASE = './newcrmdb.db'
 
 @app.route('/')
 def index():
-    # 철자 오류 수정: connnect -> connect
     conn = sqlite3.connect(DATABASE)
     cur = conn.cursor()
     cur.execute('SELECT * FROM users LIMIT 20')
