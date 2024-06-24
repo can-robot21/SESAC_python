@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상점 정보</title>
+</head>
+<body>
+<h1>상점 정보 : parkSH</h1>
+    <form method="GET" onsubmit="searchStores(); return false;">
+        <input type="text" id="search-input" placeholder="검색할 상점이름">
+        <button type="submit">검색</button>
+    </form>
+    <table border="1" id="store-table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Address</th>
+        </tr>
+    </table>
+    
+    <script>
+        function searchStores() {
+            const name = document.getElementById('search-input').value;
+            fetch(`/api/stores?name=${encodeURIComponent(name)}`)
+            .then(response => response.json())
+            .then(data => {
+                const table = document.getElementById('store-table');
+                // 기존 테이블 내용을 지운다.
+                clearTable();
+                data.forEach(store => {
+                    const row = table.insertRow();
+                    row.insertCell(0).textContent = store.Id;
+                    row.insertCell(1).textContent = store.Name;
+                    row.insertCell(2).textContent = store.Type;
+                    row.insertCell(3).textContent = store.Address;
+                });
+            });
+        }
+        
+        function clearTable() {
+            const table = document.getElementById('store-table');
+            while (table.rows.length > 1) {
+                table.deleteRow(1);
+            }
+        }
+        
+        function fetchStores() {
+            fetch('/api/stores')
+            .then(response => response.json())
+            .then(data => {
+                // 여기에서 fetch로 가져온 데이터 처리하는 코드 작성
+                const table = document.getElementById('store-table');
+                data.forEach(store => {
+                    const row = table.insertRow();
+                    row.insertCell(0).textContent = store.Id;
+                    row.insertCell(1).textContent = store.Name;
+                    row.insertCell(2).textContent = store.Type;
+                    row.insertCell(3).textContent = store.Address;
+                });
+            })
+            .catch(error => console.error('데이터 처리중 오류 발생', error));
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchStores();
+        });
+    </script>
+</body>
+</html>
