@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상점관리</title>
+</head>
+<body>
+<div id=head>
+    <div id='logo'>고객관리페이지</div>
+    <nav> 
+        <ul>
+            <li><a href='/'>처음으로</a></li>
+            <li><a href='/user'>고객</a></li>
+            <li><a href='/store'>매장</a></li>
+            <li><a href='/item'>메뉴</a></li>
+            <li><a href='/order'>주문</a></li>
+            <li><a href='/orderitem'>주문내역</a></li>        
+        </ul>
+    </nav>
+    <div id='login'>
+        <a href='/login'>로그인</a>
+        <a href='/sign'>가입</a>
+    </div>
+</div>
+<div id='bodydiv'>
+        <div id='searchdiv'>
+        <form action='/user' method='GET'>
+            <input id = 'searchinput' type="text" name="name" id="inputText" plasceholder="검색값을 입력하세요">
+            <button id='searchicon'>검색하기</button>
+        </form>
+    </div>
+    <div id='listdiv'>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>Type</th>
+            <th>Address</th>
+        </tr>
+        {% for store in stores %}
+        <tr>
+            <td>{{ store[0] }}</td>
+            <td>{{ store[1] }}</td>
+            <td>{{ store[2] }}</td>
+            <td>{{ store[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div id='pagenation'>
+    
+    {% for page in range(1, total_page + 1) %}
+        {% if page == now_page %}
+            {{ page }}
+        {% else %}
+            [ <a href="{{ url_for('store', page=page, name=name_query) }}">{{ page }}</a> ]
+        {% endif %}    
+    {% endfor %}
+    </div>
+</div>
+<div id='footer'>
+    <ul>
+        <li><a href='/user'>고객</a></li>
+        <li><a href='/store'>매장</a></li>
+        <li><a href='/item'>메뉴</a></li>
+        <li><a href='/order'>주문</a></li>
+        <li><a href='/orderitem'>주문내역</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

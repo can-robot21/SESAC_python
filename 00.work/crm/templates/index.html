@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR:wght@200..900&display=swap" rel="stylesheet">
+    <title>상점관리</title>
+    <style>
+    body {
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        margin: 0; 
+        font-family: "Noto Sans KR", sans-serif;       
+    }
+    a {
+        text-decoration: none; /* 기본 스타일 제거 */
+        color: inherit; /* 부모 요소의 색상을 상속 */
+    }
+    #intro {
+    display: flex;
+    flex-direction: column; /* 요소들을 세로로 배치 */
+    justify-content: center; /* 세로 방향으로 중앙 정렬 */
+    align-items: center; /* 가로 방향으로 중앙 정렬 */
+    width: 200px;
+    height: 200px;
+    border: 3px solid lightgray;
+    border-radius: 7px;
+    }
+    #into {
+        background-color: #0055ff;
+        color:white;
+        witdh: 250px;
+        height: 30px;
+        border: 5px solid #0055ff;
+        border-radius: 50%;
+        font-size: 13px;
+        padding-top: 10px;
+        padding-bottom: 5px;  
+              
+    }
+    </style>
+</head>
+<body>
+<div id='intro'>
+    <h3>매장관리 : master</h3><br>
+    <p id='into'><a href='/user'> 관리화면 </a></p>
+</div>
+</body>
+</html>
