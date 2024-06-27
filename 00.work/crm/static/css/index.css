@@ -1,0 +1,47 @@
+body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: "Noto Sans KR", sans-serif;     
+    background-color: lightgray;          
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+#intro {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    border: 3px solid lightgray;
+    border-radius: 50%;
+    z-index: 1;
+}
+#intro::after {
+    content: '';
+    position: absolute;
+    width: 240px;  /* 가상 요소의 크기를 늘림 */
+    height: 240px;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 80%, rgb(64, 64, 64) 60%);
+    border-radius: 50%;
+    z-index: -1;
+    top: -20px;  /* 가상 요소의 위치를 조정 */
+    left: -20px;
+}
+#into {
+    width: 70px; 
+    height: 30px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 13px;
+    text-align: center;
+}

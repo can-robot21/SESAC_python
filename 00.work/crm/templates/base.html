@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR:wght@200..900&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet">
+
+    <title>상점관리</title>
+</head>
+<body>
+<div id='header'>
+    <div id='logo'>고객관리페이지</div>
+    <nav id='navi'> 
+        <ul>
+            <li><a href='/'>첫화면</a></li>
+            <li><a href='/user'>고객</a></li>
+            <li><a href='/store'>매장</a></li>
+            <li><a href='/item'>메뉴</a></li>
+            <li><a href='/order'>주문</a></li>
+            <li><a href='/orderitem'>주문내역</a></li>        
+        </ul>
+    </nav>
+    <div id='login'>
+        <a href='/login' id="in">로그인</a>
+        <a href='/sign' id="sign">가입</a>
+    </div>
+</div>
+</div>
+<div id='bodydiv'>
+    {% block content %}
+    
+    {% endblock %}
+</div>
+<div id='footer'>
+    <div id='foot'>
+    <ul>
+        <li><a href='/user'>고객</a></li>
+        <li><a href='/store'>매장</a></li>
+        <li><a href='/item'>메뉴</a></li>
+        <li><a href='/order'>주문</a></li>
+        <li><a href='/orderitem'>주문내역</a></li>
+    </ul>
+    </div>
+    {% block footer %}
+    
+    {% endblock %}
+</div>
+
+</body>
+</html>

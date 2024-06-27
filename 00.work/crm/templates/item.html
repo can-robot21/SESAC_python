@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id='listdiv'>
+    <table id='list'>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>Type</th>
+            <th>UnitPrice</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[2] }}</td>
+            <td>{{ item[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    <div id='pagenation'>
+    
+    {% for page in range(1, total_page + 1) %}
+        {% if page == now_page %}
+            {{ page }}
+        {% else %}
+            [ <a href="{{ url_for('item', page=page, name=name_query) }}">{{ page }}</a> ]
+        {% endif %}    
+    {% endfor %}
+    </div>
+{% endblock %}
+
+{% block footer %} 
+
+{% endblock %}
