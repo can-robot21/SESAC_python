@@ -1,0 +1,27 @@
+#id-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    background-color: lightgray;
+}
+#listdiv {
+    border: 5px solid lightgray;
+}
+
+#detail-info {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-size:13px;
+}
+
+#detail-info td {
+    border: 1px solid gray;
+    height: 30px;
+    padding: 0;
+    margin:0;
+    text-align: center;
+}

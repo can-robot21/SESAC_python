@@ -20,8 +20,20 @@ a {
     width: 200px;
     height: 200px;
     border: 3px solid lightgray;
-    border-radius: 50%;
+    transform: rotate(45deg); /* 마름모꼴로 회전 */
     z-index: 1;
+}
+#intro h3, #intro p {
+    transform: rotate(-45deg); /* 텍스트를 다시 회전하여 가독성을 유지 */
+    margin: 0; /* 기본 margin 제거 */
+}
+
+#intro h3 {
+    margin-right: 50px;
+}
+
+#intro #into {
+    margin-left: 20px;
 }
 #intro::after {
     content: '';

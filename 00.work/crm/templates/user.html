@@ -8,40 +8,43 @@
         </form>
     </div>
     <div id='listdiv'>
-    <table id='list'>
-        <tr>
-            <th>ID</th>
-            <th>NAME</th>
-            <th>Gender</th>
-            <th>AGE</th>
-            <th>BIRTHDATE</th>
-            <th>ADDRESS</th>
-        </tr>
-        {% for user in users %}
-        <tr>
-            <td>{{ user[0] }}</td>
-            <td>{{ user[1] }}</td>
-            <td>{{ user[2] }}</td>
-            <td>{{ user[3] }}</td>
-            <td>{{ user[4] }}</td>
-            <td>{{ user[5] }}</td> 
-        </tr>
-        {% endfor %}
-    </table>
+        <table id='list'>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>Gender</th>
+                <th>AGE</th>
+                <th>BIRTHDATE</th>
+                <th>ADDRESS</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td><a href="{{ url_for('detail_user', user_id=user[0]) }}">{{ user[0] }}</a></td>
+                <td>{{ user[1] }}</td>
+                <td>{{ user[2] }}</td>
+                <td>{{ user[3] }}</td>
+                <td>{{ user[4] }}</td>
+                <td>{{ user[5] }}</td> 
+            </tr>
+            {% endfor %}
+        </table>
     </div>
     <div id='pagenation'>
-            {% for page in range(1, total_page + 1) %}
-                {% if page == now_page %}
-                    {{ page }}
-                {% else %}
-                    [ <a href="{{ url_for('user', page=page, name=name_query) }}">{{ page }}</a> ]
-                {% endif %}    
-            {% endfor %}
-        </div>
-        
+        {% if start_page > 1 %}
+            <a href="{{ url_for('user', page=start_page-per_list, name=name_query )}}"> 이전 </a>
+        {% endif %}
+        {% for page in range(start_page, min(start_page + per_list, total_page + 1)) %}
+            {% if page == now_page %}
+                <span id="now">{{ page }}</span>
+            {% else %}
+                <a href="{{ url_for('user', page=page, name=name_query) }}" id='page-link'>{{ page }}</a>
+            {% endif %}    
+        {% endfor %}
+        {% if start_page + per_list <= total_page %}
+            <a href="{{ url_for('user', page=start_page+per_list, name=name_query )}}"> 다음 </a>
+        {% endif %}
     </div>
 {% endblock %}
 
 {% block footer %} 
-
 {% endblock %}
