@@ -148,6 +148,7 @@ table {
 #foot {
     display: flex;
     margin-top:10px;
+    font-size: 10;
 }
 
 #foot ul {
@@ -160,6 +161,6 @@ table {
 
 #foot ul li {
     margin: 0 20px;
-    color: rgb(92, 92, 92);
+    color: rgb(37, 37, 37);
     border: 0;
 }

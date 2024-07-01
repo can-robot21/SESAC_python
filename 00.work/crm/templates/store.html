@@ -2,8 +2,8 @@
 
 {% block content %}
     <div id='searchdiv'>
-        <form action='/user' method='GET'>
-            <input id = 'searchinput' type="text" name="name" id="inputText" plasceholder="검색값을 입력하세요">
+        <form action='/store' method='GET'>
+            <input id='searchinput' type="text" name="name" id="inputText" placeholder="검색값을 입력하세요">
             <button id='searchicon'>검색하기</button>
         </form>
     </div>
@@ -27,17 +27,17 @@
     </div>
     <div id='pagenation'>
         {% if start_page > 1 %}
-            <a href="{{ url_for('user', page=start_page-per_list, name=name_query )}}"> 이전 </a>
+            <a href="{{ url_for('store', page=start_page-per_list, name=name_query )}}"> 이전 </a>
         {% endif %}
         {% for page in range(start_page, min(start_page + per_list, total_page + 1)) %}
             {% if page == now_page %}
                 <span id="now">{{ page }}</span>
             {% else %}
-                <a href="{{ url_for('user', page=page, name=name_query) }}" id='page-link'>{{ page }}</a>
+                <a href="{{ url_for('store', page=page, name=name_query) }}" id='page-link'>{{ page }}</a>
             {% endif %}    
         {% endfor %}
         {% if start_page + per_list <= total_page %}
-            <a href="{{ url_for('user', page=start_page+per_list, name=name_query )}}"> 다음 </a>
+            <a href="{{ url_for('store', page=start_page+per_list, name=name_query )}}"> 다음 </a>
         {% endif %}
     </div>
 {% endblock %}

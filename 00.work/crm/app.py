@@ -60,9 +60,9 @@ def detail_user(user_id):
     query = 'SELECT * FROM users WHERE id = ?'
     cur.execute(query, (user_id,))
     row = cur.fetchone()
-    print(f'사용자 ID {{ user_id }}의 검색결과: {{ row }}')
+    print(f'사용자 ID {user_id}의 검색결과: {row}')
     
-    return render_template('detail_user.html', user_info = row)
+    return render_template('detail_user.html', user_info=row)
       
 @app.route('/store')
 @app.route('/store/<int:page>')

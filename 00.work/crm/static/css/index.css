@@ -13,19 +13,41 @@ a {
 #intro {
     position: relative;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
     width: 200px;
     height: 200px;
-    border: 3px solid lightgray;
     transform: rotate(45deg); /* 마름모꼴로 회전 */
     z-index: 1;
+    padding: 10px; /* 내부 패딩을 추가하여 공간 확보 */
+    box-sizing: border-box;
+}
+#intro::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgb(255, 168, 168); /* 붉은색 테두리 */
+    box-sizing: border-box;
+    z-index: -1; /* 내부 테두리를 내부로 배치 */
 }
 #intro h3, #intro p {
     transform: rotate(-45deg); /* 텍스트를 다시 회전하여 가독성을 유지 */
     margin: 0; /* 기본 margin 제거 */
+}
+
+#intro .inner-border {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
 }
 
 #intro h3 {
@@ -42,7 +64,7 @@ a {
     height: 240px;
     background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 80%, rgb(64, 64, 64) 60%);
     border-radius: 50%;
-    z-index: -1;
+    z-index: -2;
     top: -20px;  /* 가상 요소의 위치를 조정 */
     left: -20px;
 }
