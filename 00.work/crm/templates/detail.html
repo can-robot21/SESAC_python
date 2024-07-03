@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block header %}
+
+    <link href="{{ url_for('static', filename='css/detail.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+
+    <div>
+        <span id="detail-title"> | 상세정보 </span>
+        <p id='id-info'> id : {{ info.Id }}</p> <!-- ID 출력 -->
+        <div id='listdiv'>
+            <table id='detail-info'>
+                {% for key, value in info.items() %}
+                {% if key != 'Id' %}  <!-- ID 필드 제외 -->
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %} 
+{% endblock %}

@@ -10,9 +10,9 @@
         </tr>
         {% for orderitem in orderitems %}
         <tr>
-            <td>{{ orderitem[0] }}</td>
-            <td>{{ orderitem[1] }}</td>
-            <td>{{ orderitem[2] }}</td>
+            <td><a href="{{ url_for('detail_orderitem', orderitem_id=orderitem[0]) }}">{{ orderitem[0] }}</a></td>
+            <td><a href="{{ url_for('detail_order', order_id=orderitem[1]) }}">{{ orderitem[1] }}</td>
+            <td><a href="{{ url_for('detail_item', item_id=orderitem[2]) }}">{{ orderitem[2] }}</td>
         </tr>
         {% endfor %}
     </table>
