@@ -1,10 +1,26 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
+import sqlite3
 
 app = Flask(__name__)
 app.secret_key = 'star1234'
 
 # 사용자 계정정보
-users = {'username': 'password'}
+# users = {'username': 'password'}
+DATABASE = 'users.db'
+
+def connect_db():
+    return sqlite3.connect(DATABASE)
+
+def init_database():
+    db = connect_db()
+    cursor = db.cursor()
+    cursor.execute('''
+                   CREATE TABLE IF EXISTS users (
+                       id INTEGER PRIMARY KEY AUTOINCREAMENT,
+                       username TEXT UNIQUE NOT NULL,
+                       password TEXT NOT NULL
+                   )
+                   ''')
 
 @app.route('/')
 def index():

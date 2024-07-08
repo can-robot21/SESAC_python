@@ -9,6 +9,8 @@ PER_PAGE = 20
 START_PAGE = 1
 PER_LIST = 15
 
+
+# 상세 페이지 동일하게 처리
 def detail(dbname, id):
     conn = get_db_connect()
     cur = conn.cursor()
@@ -28,11 +30,11 @@ def index():
 
 @app.route('/login')
 def login():
-    return f'기능 추가 예정'
+    return f'기능 추가'
 
 @app.route('/sign')
 def sign():
-    return f'기능 추가 예정'
+    return f'기능 추가'
 
 @app.route('/user')
 @app.route('/user/<int:page>')

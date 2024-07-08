@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>차트/그래프 그리기</h1>
+    <canvas id="mycanvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('mycanvas');
+        const context = canvas.getContext('2d');
+
+        // 여기에서부터 그림영역
+        // 사각형 그리기
+        context.fillStyle = '#ff0000' // RGB 
+        context.fillRect(50, 50, 200, 80) // ( x, y , width, height)
+
+        context.fillStyle = '#0055aa'
+        context.fillRect(50, 150, 200, 80)
+
+        // 원그리기
+        context.fillstyle = '#0000ff'
+        context.beginPath() // 연결 초기화
+        context.arc(350, 100, 30, 0, 2 * Math.PI) // (x, y, radius, 출발각도, 끝각도(2pi = 360도))
+        context.fill(); // 그리기
+
+        // 선그리기
+        context.fillstyle = '#00ff00'
+        context.linewidth = 2;
+        context.beginPath();
+        context.moveTo(200, 50); // 시작점 위치
+        context.lineTo(300, 130); // 중간지점 위치
+        context.lineTo(20, 200); // 중간지점 위치
+        context.lineTo(400, 30); // 끝지점 위치
+        context.stroke();
+
+        // 텍스트 입력
+        context.font = '30px Arial'; // 폰트 크기 및 종류
+        context.fillstyle = '#ffffff';
+        context.fillText('핼로우, Hello', 50, 100);
+    </script>
+</body>
+</html>

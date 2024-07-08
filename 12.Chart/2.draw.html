@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('mycanvas');
+        const context = canvas.getContext('2d');
+
+        // pac-man 그리기
+        context.beginPath(); // 연결 초기화
+        context.moveTo(200, 200); // 중간으로 시작점 이동
+
+        const startAngle = 0.2 * Math.PI; // 시작 각도
+        const endAngle = 1.8 * Math.PI; // 끝 각도
+        context.arc(200, 200, 50, startAngle, endAngle);
+        context.fillStyle = 'yellow';
+        context.closePath(); // 연결종료
+        context.fill(); // 도형 채우기
+
+        // 웃는 얼굴 그리기
+        context.beginPath();
+        context.arcTo(75, 75, 50, 0, Math.PI * 2)
+        context.moveTo(110, 75);
+        context.arc(75, 75, 35, 0.2, Math.PI * 1)
+        // 코드 추가 필요...
+    </script>
+</body>
+</html>

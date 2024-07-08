@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('mycanvas');
+        const context = canvas.getContext('2d');
+
+        let x = 0;
+        let y = 0;
+
+        function draw() {
+            context.clearRect(0, 0, canvas.width, canvas.height); // 캔버스 클리어
+            context.fillStyle = '#ff0000';
+            context.fillRect(x, y, 50, 50);
+
+            x += 5;
+            if (x > canvas.width) {
+                x = 0;
+                y += 50;
+            }
+            if (y > canvas.height) {
+                y = 0;
+            }
+            
+            requestAnimationFrame(draw); // 반복호출
+        }
+
+        draw();
+
+    </script>
+</body>
+</html>
