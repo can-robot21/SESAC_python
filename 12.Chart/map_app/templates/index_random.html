@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        #map { height: 600px; }
+    </style>
+    <title>커피샵 지도</title>
+</head>
+<body>
+    <h1>커피샵 지도</h1>
+    <div>
+        <form action="/map" method="get">
+            <label for="random_num">생성할 카페 숫자를 입력하세요:</label>
+            <input type="text" id="random_num" name="num_points" placeholder="숫자 입력">
+            <button type="submit">랜덤생성</button>
+        </form>
+    </div>
+    <div id="map">
+        {% if map_html %}
+            {{ map_html | safe }}
+        {% else %}
+            <p>카페 위치를 생성하려면 숫자를 입력하세요.</p>
+        {% endif %}
+    </div>
+
+    <script>
+        // 추가적인 JavaScript 코드는 여기에 작성
+    </script>
+</body>
+</html>
