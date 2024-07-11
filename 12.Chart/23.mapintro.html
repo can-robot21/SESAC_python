@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #map { height: 600px; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([37.532600, 127.024612], 13); // GPS 좌표
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        // 63빌딩 좌표 마커
+        var marker63 = L.marker([37.520697, 126.944455]).addTo(map);
+        marker63.bindPopup("<b>63 Building</b><br>This is the 63 Building.").openPopup();
+
+        // 63빌딩에 지름 50px 붉은색 원형 추가
+        var circle = L.circleMarker([37.520697, 126.944455], {
+            color: 'red',
+            radius: 25 // 반지름이므로 50px 원을 만들려면 25로 설정
+        }).addTo(map);
+
+        var tourlistSpots = [
+            {
+                name: '경복궁',
+                location: [37.579617, 126.977041],
+                description: '경복궁은 조선 왕조의 법궁으로서...',
+                imageurl: 'https://news.eugenes.co.kr/news/photo/201608/2245_4430_324.jpg'
+            },
+            {
+                name: '청와대',
+                location: [37.5866076, 126.974811],
+                description: '청와대는 대한민국 대통령의 관저...',
+                imageurl: 'https://img.sbs.co.kr/newimg/news/20220509/201662572_500.jpg'
+            },
+            {
+                name: '남산타워',
+                location: [37.5511694, 126.9882266],
+                description: '남산타워는 서울의 랜드마크...',
+                imageurl: 'https://korean.visitseoul.net/comm/getImage?srvcId=POST&parentSn=36&fileTy=POSTTHUMB&fileNo=8'
+            },
+            // 추가 관광지 정보
+        ];
+
+        tourlistSpots.forEach(function (spot) {
+            var marker = L.marker(spot.location).addTo(map).bindPopup(spot.name);
+
+            marker.on('click', function() {
+                var popupContent = `
+                <div>
+                    <h3>${spot.name}</h3>
+                    <p>${spot.description}</p>
+                    <img src='${spot.imageurl}' alt='${spot.name}' width='100%'>
+                </div>
+                `;
+                marker.bindPopup(popupContent).openPopup();
+            });
+        });
+    </script>
+</body>
+</html>

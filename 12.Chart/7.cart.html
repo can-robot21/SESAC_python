@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myChart" width="600" height="400"></canvas>
+
+    <script>
+        // 데이터 가상입력
+        const data = {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: 'My Data',
+                data: [12, 5, 10, 16, 5, 2],
+                backgroundColor: 'lightyellow',
+                borderColor: 'gray',
+                borderWidth: 1
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                // 필요한 각종 옵션
+            }
+        };
+
+        // 그래프 그리기
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, config);
+    </script>
+</body>
+</html>

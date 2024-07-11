@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div style="width: 800px">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        // 우리의 데이터 - 이걸 백엔드에 요청해서 받아와야함...
+        // var labels = ['2023-01', '2023-02', '2023-03', '2023-04', '2023-05', '2023-06'];
+        // var revenue = [797500, 401500, 665500, 660000, 566500, 709500]
+
+        async function fetchData() {
+            const response = await fetch('/data'); // 백엔드에 요청할 URL 주소
+            const data = await response.json(); // 백엔드에서 JSON으로 준다고 가정
+            return data;
+        }
+
+        // const a = 10;  // 이거 언제할당될지?? 100% 당장 실행됨...
+        // const a = await fetch('www.naver.com/주식데이터') // 이건 언제올지 모르니.. 기다려야함..
+
+        async function drawChart() {
+            const revenue = await fetchData();
+
+            const data = {
+                labels: revenue.labels,
+                datasets: [
+                    {
+                        label: '월간 매출액',
+                        data: revenue.revenue,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)', // 막대 색상 투명도 20%
+                        borderColor: 'rgba(255,99, 132, 1)', // 투명도 100% (1.0 = 불투명)
+                        borderWidth: 2 // 막대 테두리 두께
+                    }
+                ]
+            };
+
+            // chart.js 의 그래프 설정값들
+            const config = {
+                type: 'line', // 차트 유형, bar, line, 등등...
+                data: data, // 차트 데이터가 들어갈곳
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '매출액'
+                            }
+                        }
+                    }
+                }
+            };
+
+            // 그래프 그리기
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const chart = new Chart(ctx, config);
+        }
+
+        window.onload = drawChart; // 페이지 로딩이 끝났을 때 함수 호출
+        // document.addEventListener(DOMCon...) {
+        //     drawChart();
+        // }
+    </script>
+</body>
+</html>

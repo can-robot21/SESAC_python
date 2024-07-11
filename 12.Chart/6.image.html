@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas" width="400" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('mycanvas');
+        const ctx = canvas.getContext('2d');
+
+        const player = {
+            x: 0,
+            y: 0,
+            speed: 5,
+            directionX: 0, // 초기화
+        }
+
+        const mouse = {
+            x: 0,
+            y: 0,
+            speed: 1, // 마우스 이미지 속도
+        }
+
+        const background = new Image();
+        background.src = 'back01.avif';
+        
+        const image = new Image();
+        image.src = 'cat_icon.png';
+
+        const mouseImage = new Image();
+        mouseImage.src = 'mouse_icon.png';
+
+        background.onload = function() {
+            image.onload = function() {
+                player.x = (canvas.width - 50) / 2;
+                player.y = (canvas.height - 50);
+                console.log(player.x, player.y);
+                draw();
+            }
+
+            mouseImage.onload = function() {
+                mouse.x = Math.random() * (canvas.width - 50);
+                mouse.y = 0; // 초기 위치를 캔버스 상단으로 설정
+                draw();
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+            ctx.drawImage(image, player.x, player.y, 50, 50);
+            ctx.drawImage(mouseImage, mouse.x, mouse.y, 30, 30);
+
+            // 고양이 위치 업데이트
+            player.x += player.speed * player.directionX;
+
+            // 마우스 위치 업데이트
+            mouse.y += mouse.speed;
+
+            if (mouse.y > canvas.height) {
+                mouse.y = 0;
+                mouse.x = Math.random() * (canvas.width - 50); // 마우스 이미지를 캔버스 상단에서 다시 생성
+            }
+
+            // 위치를 바우더리 밖으로 나가지 못하게 하려면?
+            if (player.x < 0) {
+                player.x = 0;
+            }
+            if (player.x > canvas.width - 50) {
+                player.x = canvas.width - 50;
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        // 키보드 이벤트 추가
+        window.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    player.directionX = -1;
+                    break;
+                case 'ArrowRight':
+                    player.directionX = 1;
+                    break;
+            }
+        });
+
+        window.addEventListener('keyup', (e) => {
+            switch(e.key) {
+                case 'ArrowLeft':
+                case 'ArrowRight':
+                    player.directionX = 0;
+                    break;
+            }
+        });
+
+    </script>
+</body>
+</html>

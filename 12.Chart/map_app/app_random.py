@@ -35,7 +35,7 @@ def index():
 
 @app.route('/map', methods=['GET'])
 def map_points():
-    num_points = int(request.args.get('num_points', 10))  # 기본값을 10으로 설정
+    num_points = int(request.args.get('num_points', 10))  # 기본값을 13으로 설정
     mymap = create_map(num_points)
     map_html = mymap._repr_html_()
     
