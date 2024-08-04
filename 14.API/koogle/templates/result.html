@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>"{{ query }}" 검색 결과 ({{ search_type }})</h1>
+    
+    {% if search_type == 'web' %}
+        {% for item in result.documents %}
+            <div>
+                <h2><a href="{{ item.url }}" target="_blank">{{ item.title | safe }}</a></h2>
+                <p>{{ item.contents | safe }}</p>
+                <p><a href="{{ item.url }}" target="_blank">{{ item.url }}</a></p>
+            </div>
+            <hr>
+        {% endfor %}
+    {% elif search_type == 'image' %}
+        {% for item in result.documents %}
+            <div>
+                <img src="{{ item.thumbnail_url }}" alt="{{ item.display_sitename }}">
+                <p>{{ item.display_sitename }}</p>
+                <p><a href="{{ item.doc_url }}" target="_blank">원본 보기</a></p>
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <a href="/">새 검색</a>
+</body>
+</html>

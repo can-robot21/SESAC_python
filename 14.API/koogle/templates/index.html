@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kakao API Search</title>
+</head>
+<body>
+    <h1>Kakao API 검색</h1>
+    <form action="/search" method="GET">
+        <input type="text" name="query" placeholder="검색어를 입력하세요" required>
+        <select name="type">
+            <option value="web">웹</option>
+            <option value="image">이미지</option>
+        </select>
+        <button type="submit">검색</button>
+    </form>
+</body>
+</html>
