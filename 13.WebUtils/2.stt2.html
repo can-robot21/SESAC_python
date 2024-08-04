@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>STT (Speech-To-Text)</h1>
+    <button onclick="startRecognition()">녹음시작</button>
+    <br>
+    <p id="result">여기에는 음성 인식 된 결과가 출력될 공간</p>
+
+    <script>
+        let recognition; // 전역 변수로 선언
+
+        function startRecognition() {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(function(stream) {
+                    recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                    recognition.lang = 'ko-KR';
+                    recognition.continuous = false; // 연속 인식을 비활성화
+
+                    recognition.onresult = function(event) {
+                        const transcript = event.results[0][0].transcript;
+                        console.log('분석된 내용:', transcript);
+                        document.getElementById('result').textContent = transcript; // 결과를 화면에 표시
+                    }
+
+                    recognition.onerror = function(event) {
+                        console.error('음성 인식 오류:', event.error);
+                        let errorMessage = '오류가 발생했습니다: ' + event.error;
+                        if (event.error === 'audio-capture') {
+                            errorMessage = '마이크를 확인해주세요.';
+                        } else if (event.error === 'no-speech') {
+                            errorMessage = '음성이 감지되지 않았습니다. 다시 시도해주세요.';
+                        }
+                        document.getElementById('result').textContent = errorMessage;
+                    }
+
+                    recognition.onend = function() {
+                        console.log('음성 인식이 종료되었습니다.');
+                    }
+
+                    recognition.start();
+                })
+                .catch(function(err) {
+                    console.error('마이크 액세스 오류:', err);
+                    document.getElementById('result').textContent = '마이크 액세스 오류: ' + err.message;
+                });
+        }
+    </script>
+</body>
+</html>

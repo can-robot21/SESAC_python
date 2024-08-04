@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음성 인식 퀴즈</title>
+</head>
+<body>
+    <h1>음성 인식 퀴즈</h1>
+    <button id="qButton">퀴즈 질문 듣기</button>
+    <p id="status">상태: 준비 중....</p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const qButton = document.getElementById('qButton');
+            const status = document.getElementById('status');
+
+            const questions = [
+                {
+                    question: '대한민국의 수도는 어디인가요?',
+                    answer: '서울'
+                },
+                {
+                    question: '태양계에서 가장 큰 행성은 무엇인가요?',
+                    answer: '목성'
+                }
+            ];
+
+            let currentQuestionIndex = 0;
+
+            // 브라우저 지원여부 체크
+            if (!('speechSynthesis' in window)) {
+                alert('죄송합니다. TTS 미지원');
+            }
+            if (!('SpeechRecognition' in window) && !('webkitSpeechRecognition' in window)) {
+                alert('죄송합니다. STT 미지원');
+            }
+
+            // 여기는 지원 확인 후 원래 코드 
+            const synthesis = window.speechSynthesis;
+            const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new Recognition();
+            recognition.lang = 'ko-KR';
+
+            const speakText = (text) => {
+                return new Promise((resolve) => {
+                    const speech = new SpeechSynthesisUtterance(text);
+                    speech.onend = resolve;
+                    synthesis.speak(speech);
+                    console.log(`말하는 중: ${text}`);
+                });
+            }
+
+            const countdown = () => {
+                return new Promise((resolve) => {
+                    let count = 5;
+                    const countInterval = setInterval(() => {
+                        console.log(`${count}초 남음...`);
+                        status.textContent = `${count}초 남음...`;
+                        count--;
+                        if (count < 0) {
+                            clearInterval(countInterval);
+                            resolve();
+                        }
+                    }, 1000);
+                });
+            }
+
+            const recognizeSpeech = () => {
+                return new Promise((resolve) => {
+                    recognition.start();
+                    recognition.onresult = (event) => {
+                        const transcript = event.results[0][0].transcript;
+                        console.log('음성 인식 결과:', transcript);
+                        resolve(transcript);
+                    };
+                    recognition.onerror = (event) => {
+                        console.error('음성 인식 오류:', event.error);
+                        resolve("음성 인식 오류");
+                    };
+                });
+            }
+
+            const checkAnswer = (userAnswer, correctAnswer) => {
+                console.log(`답변확인중: ${userAnswer}`);
+                return userAnswer.toLowerCase().includes(correctAnswer.toLowerCase());
+            }
+
+            // 버튼 이벤트 추가
+            qButton.addEventListener('click', async () => {
+                const currentQuestion = questions[currentQuestionIndex];
+                status.textContent = '질문을 듣고 있습니다...';
+                await speakText(currentQuestion.question);
+                status.textContent = '5초 후 답변을 말씀해주세요...';
+                await countdown();
+                status.textContent = '답변을 듣고 있습니다...';
+                const userAnswer = await recognizeSpeech();
+                status.textContent = `사용자 답변: ${userAnswer}`;
+                
+                // 정답 체크
+                const isCorrect = checkAnswer(userAnswer, currentQuestion.answer);
+                
+                // 결과 출력
+                status.textContent = isCorrect ? "정답입니다!" : "틀렸습니다. 다시 시도해보세요.";
+                
+                // 다음 질문으로 이동
+                currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+            });
+        });
+    </script>
+</body>
+</html>
